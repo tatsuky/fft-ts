@@ -14,6 +14,8 @@ const fft = FFT();
 ```
 
 ## Applying a FFT
+For `Complex` usage, see [tatsuky/complex-ts](https://github.com/tatsuky/complex-ts/).
+
 ### 1D
 ```ts
 const data: Complex[] = someFunctionToLoad1DData();
