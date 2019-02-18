@@ -98,21 +98,36 @@ export class FFT {
     }
 
     /**
-     * Calculates the power spectrum of the given spectrum and finds the max value.
+     * Calculates the power spectrum of the given 2D spectrum and finds the max value.
      * @param spectrum 
      * @param width 
      * @param height 
      */
-    public power(spectrum: Complex[][], width: number, height: number): [number[][], number] {
-        const [W, H] = [width, height];
-        let powerSpectrum: number[][] = this.init2DArray(W, H);
+    public power2d(spectrum: Complex[][], width: number, height: number): [number[][], number] {
+        let powerSpectrum: number[][] = new Array(height);
         let max: number = 0;
 
-        for (let y = 0; y < H; y++) {
-            for (let x = 0; x < W; x++) {
-                powerSpectrum[y][x] = spectrum[y][x].absolute() ** 2;
-                max = Math.max(max, powerSpectrum[y][x]);
-            }
+        powerSpectrum = spectrum.map(row => {
+            let [rowSpectrum, rowMax] = this.power1d(row, width);
+            max = Math.max(max, rowMax);
+            return rowSpectrum;
+        });
+
+        return [powerSpectrum, max];
+    }
+
+    /**
+     * Calculates the power spectrum of the given 1D spectrum and finds the max value.
+     * @param spectrum 
+     * @param size
+     */
+    public power1d(spectrum: Complex[], size: number): [number[], number] {
+        let powerSpectrum = new Array(size);
+        let max = 0;
+
+        for (let x = 0; x < size; x++) {
+            powerSpectrum[x] = spectrum[x].absolute() ** 2;
+            max = Math.max(max, powerSpectrum[x]);
         }
 
         return [powerSpectrum, max];
