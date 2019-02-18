@@ -92,7 +92,7 @@ export class FFT {
 
         let data: Complex[] = spectrum.map(c => c.swap());
         data = this.fft1d(data, N);
-        data = data.map(c => c.divide(new Complex({ real: N, imag: 0 })));
+        data = data.map(c => c.swap().divide(new Complex({ real: N, imag: 0 })));
 
         return data;
     }
