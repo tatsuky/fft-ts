@@ -21,6 +21,9 @@ For `Complex` usage, see [tatsuky/complex-ts](https://github.com/tatsuky/complex
 const data: Complex[] = someFunctionToLoad1DData();
 const size = data.length;
 const spectrum = fft.fft1d(data, size);
+
+// max is to normalize power spectrum data.
+const [powerSpectrum, max] = fft.power1d(spectrum, size);
 ```
 
 ### 2D
