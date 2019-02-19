@@ -3,6 +3,9 @@ A TypeScript library to operate a Cooley-Tukey FFT.
 
 ![Sample](https://github.com/tatsuky/fft-ts/blob/master/images/sample.png)
 
+## Live Demo
+https://www.tatsuky.com/playground/fft/ (Japanese)
+
 ## Getting Started
 ```ts
 import { Complex } from './complex';
