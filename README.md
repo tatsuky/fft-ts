@@ -50,4 +50,4 @@ const data = fft.ifft2d(spectrum, width, height);
 ```
 
 ## Notes
-Since FFTs in this library is not optimized, the execution speed might be slower than the commercial FFT libraries. This library is suitable for educational or experimental purposes only.
+Since the FFT in this library is not optimized, the execution speed might be slower than the commercial FFT libraries. This library is suitable for educational or experimental purposes only.
